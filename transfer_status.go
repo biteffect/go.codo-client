@@ -19,3 +19,19 @@ const (
 	TrStatusPaid      TransferStatus = "paid"
 	TrStatusCanceled  TransferStatus = "canceled"
 )
+
+func TransferStatuses() []TransferStatus {
+	return []TransferStatus{
+		TrStatusDraft,
+		TrStatusPrepared,
+		TrStatusAccepted,
+		TrStatusFail,
+		TrStatusPayable,
+		TrStatusHold,
+		TrStatusReady,
+		TrStatusPromised,
+		TrStatusDelivered,
+		TrStatusPaid,
+		TrStatusCanceled,
+	}
+}
