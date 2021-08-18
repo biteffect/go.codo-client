@@ -12,7 +12,6 @@ const (
 	FldTypeBool         FieldType = "boolean"
 	FldTypeDate         FieldType = "date"
 	FldTypeTaxonomy     FieldType = "taxonomy"
-	FldTypeFieldSet     FieldType = "field-set"
 	FldTypeVerification FieldType = "verification"
 
 	FldResolveAccept FieldResolveStatus = "accept"
@@ -47,6 +46,5 @@ func FieldTypes() []FieldType {
 		FldTypeText,
 		FldTypeDate,
 		FldTypeBool,
-		FldTypeFieldSet,
 	}
 }
