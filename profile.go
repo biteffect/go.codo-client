@@ -1,4 +1,4 @@
-package codo_cash
+package codo
 
 import uuid "github.com/satori/go.uuid"
 

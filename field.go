@@ -1,4 +1,4 @@
-package codo_cash
+package codo
 
 type FieldResolveStatus string
 

@@ -1,4 +1,4 @@
-package codo_cash
+package codo
 
 import "fmt"
 

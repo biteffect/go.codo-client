@@ -1,4 +1,4 @@
-package codo_cash
+package codo
 
 import (
 	gmfin "github.com/biteffect/go.gm-fin"
