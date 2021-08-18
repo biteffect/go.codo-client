@@ -1,4 +1,4 @@
-package codo_cash
+package client
 
 import (
 	"bytes"
@@ -9,6 +9,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	codo_cash "github.com/biteffect/go.codo-client"
 	uuid "github.com/satori/go.uuid"
 	"io/ioutil"
 	"net/http"
@@ -89,10 +90,10 @@ func (c *Client) call(method string, req interface{}, resp interface{}) error {
 	}
 
 	result := struct {
-		JsonRpc string      `json:"jsonrpc"`
-		Result  interface{} `json:"result,omitempty"`
-		ID      int         `json:"id"`
-		Error   *CodoError  `json:"error,omitempty"`
+		JsonRpc string               `json:"jsonrpc"`
+		Result  interface{}          `json:"result,omitempty"`
+		ID      int                  `json:"id"`
+		Error   *codo_cash.CodoError `json:"error,omitempty"`
 	}{
 		Result: resp,
 	}

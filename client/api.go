@@ -1,4 +1,4 @@
-package codo_cash
+package client
 
 import (
 	"crypto/rsa"
@@ -10,7 +10,11 @@ import (
 )
 
 // NewClient returns Codo Cash API Client
-func NewClient(u url.URL, id uuid.UUID, key *rsa.PrivateKey) (*Client, error) {
+func New(u url.URL, sid string, key *rsa.PrivateKey) (*Client, error) {
+	id, err := uuid.FromString(sid)
+	if err != nil {
+		return nil, err
+	}
 	out := Client{
 		apiUrl:     u,
 		clientId:   id,
