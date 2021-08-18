@@ -1,8 +1,20 @@
 package codo
 
+type FieldType string
 type FieldResolveStatus string
 
 const (
+	FldTypeMoney        FieldType = "money"
+	FldTypeNumber       FieldType = "number"
+	FldTypePhone        FieldType = "phone"
+	FldTypeEmail        FieldType = "email"
+	FldTypeText         FieldType = "text"
+	FldTypeBool         FieldType = "boolean"
+	FldTypeDate         FieldType = "date"
+	FldTypeTaxonomy     FieldType = "taxonomy"
+	FldTypeFieldSet     FieldType = "field-set"
+	FldTypeVerification FieldType = "verification"
+
 	FldResolveAccept FieldResolveStatus = "accept"
 	FldResolveSkip   FieldResolveStatus = "skip"
 	FldResolveError  FieldResolveStatus = "error"
@@ -21,7 +33,20 @@ type FieldState struct {
 
 type FieldSchema struct {
 	Key      CodoFieldName
+	Type     FieldType
 	Name     string
-	Type     string
 	Required bool `json:",omitempty"`
+}
+
+func FieldTypes() []FieldType {
+	return []FieldType{
+		FldTypeTaxonomy,
+		FldTypeMoney,
+		FldTypeNumber,
+		FldTypePhone,
+		FldTypeText,
+		FldTypeDate,
+		FldTypeBool,
+		FldTypeFieldSet,
+	}
 }
