@@ -1,4 +1,4 @@
-module github.com/biteffect/go.codo-client
+module github.com/biteffect/go.codo_cash
 
 go 1.17
 
