@@ -9,7 +9,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	codo_cash "github.com/biteffect/go.codo-client"
+	"github.com/biteffect/go.codo_cash"
 	uuid "github.com/satori/go.uuid"
 	"io/ioutil"
 	"net/http"
@@ -20,7 +20,7 @@ import (
 
 // Client GM API client
 type Client struct {
-	apiUrl     url.URL
+	apiUrl     *url.URL
 	clientId   uuid.UUID
 	httpClient *http.Client
 	privateKey *rsa.PrivateKey
@@ -30,7 +30,9 @@ func (c *Client) call(method string, req interface{}, resp interface{}) error {
 	data := map[string]interface{}{
 		"jsonrpc": "2.0",
 		"method":  method,
-		"params":  req,
+	}
+	if req != nil {
+		data["params"] = req
 	}
 	httpBody, err := json.Marshal(data)
 	if err != nil {
@@ -72,9 +74,8 @@ func (c *Client) call(method string, req interface{}, resp interface{}) error {
 	}
 
 	httpRequest.Header.Set("Authorization", fmt.Sprintf(
-		`Signature keyId="%v",algorithm="rsa-sha256",headers="(request-target) %v",signature="%v"`,
+		`Signature keyId="%v",algorithm="rsa-sha256",headers="(request-target) host date digest",signature="%v"`,
 		c.clientId.String(),
-		strings.Join(headers, " "),
 		base64.StdEncoding.EncodeToString(signed),
 	))
 
@@ -90,10 +91,10 @@ func (c *Client) call(method string, req interface{}, resp interface{}) error {
 	}
 
 	result := struct {
-		JsonRpc string               `json:"jsonrpc"`
-		Result  interface{}          `json:"result,omitempty"`
-		ID      int                  `json:"id"`
-		Error   *codo_cash.CodoError `json:"error,omitempty"`
+		JsonRpc string          `json:"jsonrpc"`
+		Result  interface{}     `json:"result,omitempty"`
+		ID      int             `json:"id"`
+		Error   *codo.CodoError `json:"error,omitempty"`
 	}{
 		Result: resp,
 	}
@@ -102,5 +103,9 @@ func (c *Client) call(method string, req interface{}, resp interface{}) error {
 		return err
 	}
 
-	return result.Error
+	if result.Error != nil {
+		return result.Error
+	}
+
+	return nil
 }

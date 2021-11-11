@@ -10,7 +10,7 @@ import (
 )
 
 // NewClient returns Codo Cash API Client
-func New(u url.URL, sid string, key *rsa.PrivateKey) (*Client, error) {
+func New(u *url.URL, sid string, key *rsa.PrivateKey) (*Client, error) {
 	id, err := uuid.FromString(sid)
 	if err != nil {
 		return nil, err

@@ -1,34 +1,26 @@
 package client
 
 import (
-	codo_cash "github.com/biteffect/go.codo-client"
+	"github.com/biteffect/go.codo_cash"
 	uuid "github.com/satori/go.uuid"
 )
 
-func (c *Client) Profile() (*codo_cash.Profile, error) {
-	profile := &codo_cash.Profile{}
+func (c *Client) Profile() (*codo.Profile, error) {
+	profile := &codo.Profile{}
 	err := c.call("profile.info", nil, profile)
-	switch err.(type) {
-	case *codo_cash.CodoError:
-		return nil, err
-	case error:
-		return nil, err
-	default:
+	if err == nil {
+		return profile, nil
 	}
-	return profile, nil
+	return nil, err
 }
 
-func (c *Client) Balances() (*codo_cash.Profile, error) {
-	profile := &codo_cash.Profile{}
+func (c *Client) Balances() (*codo.Profile, error) {
+	profile := &codo.Profile{}
 	err := c.call("profile.info", nil, profile)
-	switch err.(type) {
-	case *codo_cash.CodoError:
-		return nil, err
-	case error:
-		return nil, err
-	default:
+	if err == nil {
+		return profile, nil
 	}
-	return profile, nil
+	return nil, err
 }
 
 func prepareTransferIdRequest(sid string) (map[string]interface{}, error) {

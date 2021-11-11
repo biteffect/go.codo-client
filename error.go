@@ -5,7 +5,7 @@ import "fmt"
 type CodoError struct {
 	Code    int
 	Message string
-	Data    interface{}
+	Data    interface{} `json:",omitempty"`
 }
 
 func (ce *CodoError) Error() string {

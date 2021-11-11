@@ -9,11 +9,20 @@ type Transfer struct {
 	Id         string         `json:",omitempty"`
 	CreatedAt  time.Time      `json:",omitempty"`
 	Method     MethodType     `json:",omitempty" pg:"method,fk,notnull,type:payout_method"`
-	Status     TransferStatus `pg:"status,notnull,type:transfer_status"`
-	Amount     gmfin.Amount   `pg:",type:numeric(20,4),notnull,default:0"`
-	Currency   gmfin.Currency `json:",omitempty" pg:",type:varchar(3),notnull,default:'UAH'"`
+	Status     TransferStatus ``
+	Amount     gmfin.Amount   ``
+	Currency   gmfin.Currency `json:",omitempty"`
 	InitiateAt *time.Time     `json:",omitempty"`
 	AcceptAt   *time.Time     `json:",omitempty"`
 
 	Fields []*Field `json:"Fields"`
+}
+
+func (t *Transfer) FieldByKey(key CodoFieldName) *Field {
+	for _, f := range t.Fields {
+		if f.Key == key {
+			return f
+		}
+	}
+	return nil
 }
