@@ -18,6 +18,10 @@ func (c *Client) TransferHold(sid string) (*codo.Transfer, error) {
 	return c.callTransferSimpleCommand("hold", sid)
 }
 
+func (c *Client) TransferUnHold(sid string) (*codo.Transfer, error) {
+	return c.callTransferSimpleCommand("unhold", sid)
+}
+
 func (c *Client) TransferPayoutFee(sid string) (*codo.TransferFee, error) {
 	fee := &codo.TransferFee{}
 	if err := c.callSimpleCommand("transfer.payout.fee", sid, fee); err != nil {
