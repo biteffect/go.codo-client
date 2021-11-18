@@ -2,6 +2,10 @@ package codo
 
 type CodoFieldName string
 
+func (n CodoFieldName) Equels(candidate CodoFieldName) bool {
+	return string(n) == string(candidate)
+}
+
 const (
 	FieldBearerCode           CodoFieldName = "bearer_code"
 	FieldInitiatorTransferId  CodoFieldName = "initiator_transfer_id"
