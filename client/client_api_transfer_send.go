@@ -53,7 +53,7 @@ func (c *Client) TransferSetAcceptFields(sid string, fields []codo.Field) ([]cod
 		return nil, err
 	}
 	req["Fields"] = fields
-	if err = c.call("transfer.accept.fields", req, &res); err != nil {
+	if err = c.call("transfer.accept.set_fields", req, &res); err != nil {
 		return nil, err
 	}
 	return res, nil
