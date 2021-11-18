@@ -10,17 +10,12 @@ const (
 	FieldAcceptorTransferId   CodoFieldName = "acceptor_transfer_id"
 	FieldAcceptorCallbackUrl  CodoFieldName = "acceptor_callback_url"
 	FieldAcceptorStash        CodoFieldName = "acceptor_stash"
+	FieldFundMethod           CodoFieldName = "fund_method"
+	FieldFundAmount           CodoFieldName = "fund_amount"
+	FieldFundCurrency         CodoFieldName = "fund_currency"
 	FieldFundCardMask         CodoFieldName = "fund_card_mask"
 	FieldPayoutCardMask       CodoFieldName = "payout_card_mask"
+	FieldPayoutAmount         CodoFieldName = "payout_amount"
+	FieldPayoutCurrency       CodoFieldName = "payout_currency"
+	FieldPayoutMethod         CodoFieldName = "payout_method"
 )
-
-/*
-	fund_method
-	fund_amount
-	fund_currency
-	fund_card_mask
-	payout_method
-	payout_amount
-	payout_currency
-	payout_card_mask
-*/
