@@ -1,1 +1,1 @@
-# go.codo-client
+# Codo Cash client library for Golang
