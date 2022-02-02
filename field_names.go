@@ -22,4 +22,5 @@ const (
 	FieldPayoutAmount         CodoFieldName = "payout_amount"
 	FieldPayoutCurrency       CodoFieldName = "payout_currency"
 	FieldPayoutMethod         CodoFieldName = "payout_method"
+	FieldReceiverMobilePhone  CodoFieldName = "receiver_mobile_phone"
 )
