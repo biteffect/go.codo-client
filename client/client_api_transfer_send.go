@@ -10,7 +10,7 @@ func (c *Client) TransferCreate(t *codo.Transfer) (*codo.Transfer, error) {
 	if t == nil {
 		return nil, errors.New("transfer is empty")
 	}
-	if t.Method != codo.MethodByCode {
+	if t.Method != codo.MethodByCode && t.Method != codo.MethodByPhone {
 		return nil, fmt.Errorf("only %s method now supported", codo.MethodByCode)
 	}
 	if t.Amount <= 0 {

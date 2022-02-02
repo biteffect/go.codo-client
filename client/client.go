@@ -84,6 +84,9 @@ func (c *Client) call(method string, req interface{}, resp interface{}) error {
 		return err
 	}
 	defer httpResp.Body.Close()
+	if httpResp.StatusCode >= 300 {
+		return fmt.Errorf("codo api return [%v] %s", httpResp.StatusCode, httpResp.Status)
+	}
 
 	respBody, err := ioutil.ReadAll(httpResp.Body)
 	if err != nil {
