@@ -58,7 +58,7 @@ func (f *Field) String() string {
 	case string:
 		return f.Value.(string)
 	case float64:
-		return fmt.Sprintf("%v", f.Value.(float64))
+		return fmt.Sprintf("%g", f.Value.(float64))
 	default:
 		return fmt.Sprintf("%v", f.Value)
 	}
