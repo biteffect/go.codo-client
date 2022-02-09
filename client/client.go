@@ -29,7 +29,8 @@ type Client struct {
 func (c *Client) call(method string, req interface{}, resp interface{}) error {
 	data := map[string]interface{}{
 		"jsonrpc": "2.0",
-		"method":  method,
+		//"id":      uuid.NewV4(),
+		"method": method,
 	}
 	if req != nil {
 		data["params"] = req
