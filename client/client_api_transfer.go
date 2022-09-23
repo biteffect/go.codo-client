@@ -10,8 +10,8 @@ func (c *Client) TransferStatus(sid string) (*codo.Transfer, error) {
 
 func (c *Client) TransferCancel(sid string, message string) (*codo.Transfer, error) {
 	req := map[string]interface{}{
-		"TransferId": sid,
-		"Message":    message,
+		"TransferId":       sid,
+		"EncryptedMessage": message,
 	}
 	res := &codo.Transfer{}
 	if err := c.call("transfer.cancel", req, res); err != nil {

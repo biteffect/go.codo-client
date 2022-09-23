@@ -32,8 +32,8 @@ func (c *Client) InvoiceStatus(sid string) (*codo.Invoice, error) {
 
 func (c *Client) InvoiceCancel(sid string, message string) (*codo.Invoice, error) {
 	req := map[string]interface{}{
-		"TransferId": sid,
-		"Message":    message,
+		"TransferId":       sid,
+		"EncryptedMessage": message,
 	}
 	res := &codo.Invoice{}
 	if err := c.call("invoice.cancel", req, res); err != nil {
